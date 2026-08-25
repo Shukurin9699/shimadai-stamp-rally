@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+ 
+<head>
+<meta charset="UTF-8">
+<title>淞風祭スタンプラリー</title>
+<style>
+
+body{
+font-family: sans-serif;
+max-width: 800px;
+margin: auto;
+padding: 20px;
+}
+ 
+h1{
+color:#0067C0;
+font-size:60px;
+}
+ 
+a{
+text-decoration:none;
+}
+ 
+button{
+padding:10px 20px;
+
+margin-top:10px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+ 
+<body>
+ 
+<h1>🎉 淞風祭スタンプラリー</h1>
+ 
+<p>集めたスタンプ</p>
+ 
+<div id="stampBook"></div>
+<p id="progress"></p>
+ 
+<p>
+<a href="point1.html">
+第1チェックポイントへ
+</a>
+</p>
+<p>
+<a href="point2.html">
+第2チェックポイントへ
+</a>
+</p>
+<p>
+<a href="point3.html">
+第3チェックポイントへ
+</a>
+</p>
+<p>
+<a href="point4.html">
+第4チェックポイントへ
+</a>
+</p>
+<p>
+<a href="point5.html">
+第5チェックポイントへ
+</a>
+</p>
+<p>
+<a href="point6.html">
+第6チェックポイントへ
+</a>
+</p>
+<p>
+<a href="point7.html">
+第7チェックポイントへ
+</a>
+</p>
+<button onclick="resetStamp()">
+リセット
+</button>
+ 
+<div id="complete"></div>
+ 
+<script>
+ 
+let count =
+Number(localStorage.getItem("stampCount")) || 0;
+ 
+updateDisplay();
+ 
+function updateDisplay() {
+let normalComplete =
+ 
+localStorage.getItem("point1") == "complete" &&
+localStorage.getItem("point2") == "complete" &&
+localStorage.getItem("point3") == "complete" &&
+localStorage.getItem("point4") == "complete" &&
+localStorage.getItem("point5") == "complete";
+ 
+let perfectComplete =
+ 
+normalComplete &&
+localStorage.getItem("point6") == "complete" &&
+localStorage.getItem("point7") == "complete";
+let html = "";
+
+ 
+if (
+localStorage.getItem("point1")
+== "complete"
+) {
+html += "✅ 第1チェックポイント<br>";
+} else {
+html += "⬜ 第1チェックポイント<br>";
+}
+ 
+if (
+localStorage.getItem("point2")
+== "complete"
+) {
+html += "✅ 第2チェックポイント<br>";
+} else {
+html += "⬜ 第2チェックポイント<br>";
+}
+if (
+localStorage.getItem("point3")
+== "complete"
+) {
+html += "✅ 第3チェックポイント<br>";
+} else {
+html += "⬜ 第3チェックポイント<br>";
+}
+if (
+localStorage.getItem("point4")
+== "complete"
+) {
+html += "✅ 第4チェックポイント<br>";
+} else {
+html += "⬜ 第4チェックポイント<br>";
+}
+ 
+if (
+localStorage.getItem("point5")
+== "complete"
+) {
+html += "✅ 第5チェックポイント<br>";
+} else {
+html += "⬜ 第5チェックポイント<br>";
+}
+if (
+localStorage.getItem("point6")
+== "complete"
+) {
+html += "✅ 第6チェックポイント<br>";
+} else {
+html += "⬜ 第6チェックポイント<br>";
+}
+ 
+if (
+localStorage.getItem("point7")
+== "complete"
+) {
+html += "✅ 第7チェックポイント<br>";
+} else {
+html += "⬜ 第7チェックポイント<br>";
+}
+document.getElementById("stampBook")
+.innerHTML = html;
+if (count < 5) {    
+ 
+document.getElementById("progress")
+.innerText =
+count + " / 5 達成";
+ 
+}
+ 
+else if (count < 7) {
+ 
+document.getElementById("progress")
+.innerText =
+"🎉 COMPLETE達成！ " +
+
+count + " / 7";
+
+}
+ 
+else {
+ 
+document.getElementById("progress")
+.innerText =
+"🌟 PERFECT COMPLETE！";
+ 
+}
+if (normalComplete && !perfectComplete) {
+document.getElementById("complete")
+.innerHTML = `
+<div style="
+background:#fff3cd;
+padding:20px;
+border-radius:10px;
+border:3px solid orange;
+margin-top:20px;
+text-align:center;
+">
+<h2 style="
+font-size:40px;
+color:orange;
+">
+🎉 COMPLETE 🎉
+</h2>
+ 
+<p>
+淞風祭スタンプラリー制覇！
+</p>
+ 
+<p>
+通常イラスト解放！
+</p>
+<img
+src="https://placehold.co/500x300/orange/white?text=NORMAL+IMAGE"
+alt="通常イラスト">
+</div>
+`;
+}
+if (perfectComplete) {
+ 
+document.getElementById("complete")
+.innerHTML = `
+<div style="
+background:#e6f7ff;
+padding:20px;
+border-radius:10px;
+border:3px solid #00aaff;
+margin-top:20px;
+text-align:center;
+">
+ 
+<h2 style="
+color:#00aaff;
+font-size:40px;
+">
+🌟 PERFECT COMPLETE 🌟
+</h2>
+ 
+<p>
+デジタル完全制覇！
+</p>
+ 
+<p>
+限定豪華イラスト解放！
+</p>
+ 
+<img
+src="https://placehold.co/500x300/00AAFF/white?text=PERFECT+IMAGE"
+alt
+</div>
+
+`;
+}
+ 
+}
+ 
+function resetStamp() {
+ 
+localStorage.removeItem("stampCount");
+localStorage.removeItem("point1");
+localStorage.removeItem("point2");
+localStorage.removeItem("point3");
+localStorage.removeItem("point4");
+localStorage.removeItem("point5");
+localStorage.removeItem("point6");
+localStorage.removeItem("point7");
+location.reload();
+}
+ 
+</script>
+ 
+</body>
+ 
+</html>

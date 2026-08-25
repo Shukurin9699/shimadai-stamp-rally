@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+ 
+<head>
+<meta charset="UTF-8">
+<title>第3チェックポイント</title>
+</head>
+ 
+<body>
+ 
+<h1>第3チェックポイント</h1>
+ 
+<div id="questionArea">
+ 
+<p>
+Q. 島根大学松江キャンパスがある市は？
+</p>
+ 
+<button onclick="answerQuestion(true)">
+① 松江市
+</button>
+ 
+<button onclick="answerQuestion(false)">
+② 出雲市
+</button>
+ 
+<button onclick="answerQuestion(false)">
+③ 浜田市
+</button>
+ 
+</div>
+ 
+<div id="result"></div>
+ 
+<div id="backButton"></div>
+ 
+<script>
+ 
+checkCompletedPoint();
+ 
+function answerQuestion(correct) {
+ 
+if (
+localStorage.getItem("point3")
+== "complete"
+) {
+return;
+}
+ 
+let resultTitle = "";
+let resultText = "";
+ 
+if(correct){
+ 
+resultTitle = "⭕ 正解！";
+resultText =
+"島根大学松江キャンパスは松江市にあります。";
+ 
+}else{
+ 
+resultTitle = "❌ 不正解";
+resultText =
+"正解は松江市です。島根大学松江キャンパスは松江市にあります。";
+ 
+}
+ 
+document.getElementById("result")
+.innerHTML = `
+<h3>${resultTitle}</h3>
+ 
+<p>${resultText}</p>
+ 
+<button onclick="getPoint3Stamp()">
+スタンプ獲得
+</button>
+`;
+}
+ 
+function getPoint3Stamp() {
+ 
+localStorage.setItem(
+"point3",
+"complete"
+);
+ 
+let count =
+Number(
+localStorage.getItem("stampCount")
+) || 0;
+ 
+count++;
+ 
+localStorage.setItem(
+"stampCount",
+count
+);
+ 
+document.getElementById("result")
+.innerHTML = `
+<h3>✅ スタンプ取得済み</h3>
+<p>
+第3チェックポイントクリア！
+</p>
+`;
+ 
+document.getElementById("questionArea")
+.style.display = "none";
+document.getElementById("backButton")
+.innerHTML = `
+<button
+onclick="location.href='index.html'">
+🏠 スタンプ帳へ戻る
+</button>
+`;
+}
+ 
+function checkCompletedPoint() {
+ 
+if (
+localStorage.getItem("point3")
+== "complete"
+) {
+ 
+document.getElementById("questionArea")
+.style.display = "none";
+ 
+document.getElementById("result")
+.innerHTML = `
+<h3>✅ スタンプ取得済み</h3>
+<p>
+このチェックポイントはクリア済みです。
+</p>
+`;
+ 
+document.getElementById("backButton")
+.innerHTML = `
+<button
+onclick="location.href='index.html'">
+🏠 スタンプ帳へ戻る
+</button>
+`;
+}
+}
+ 
+</script>
+ 
+</body>
+ 
+</html>
