@@ -11,11 +11,13 @@ font-family: sans-serif;
 max-width: 800px;
 margin: auto;
 padding: 20px;
+background:#f5f7fb;
 }
  
 h1{
 color:#0067C0;
-font-size:60px;
+font-size:40px;
+text-align:center;
 }
  
 a{
@@ -23,12 +25,26 @@ text-decoration:none;
 }
  
 button{
-padding:10px 20px;
-
+padding:12px 24px;
 margin-top:10px;
 cursor:pointer;
+border:none;
+border-radius:8px;
+background:#0067C0;
+color:white;
+font-size:16px;
+}
+button:hover{
+background:#0050a0;
 }
 
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.15);
+margin-bottom:20px;
+}
 </style>
 
 </head>
@@ -39,7 +55,7 @@ cursor:pointer;
  
 <p>集めたスタンプ</p>
  
-<div id="stampBook"></div>
+<div id="stampBook" class="card"></div>
 <p id="progress"></p>
  
 <p>
@@ -91,6 +107,13 @@ Number(localStorage.getItem("stampCount")) || 0;
 updateDisplay();
  
 function updateDisplay() {
+let normalCount = 0;
+ 
+if(localStorage.getItem("point1") == "complete") normalCount++;
+if(localStorage.getItem("point2") == "complete") normalCount++;
+if(localStorage.getItem("point3") == "complete") normalCount++;
+if(localStorage.getItem("point4") == "complete") normalCount++;
+if(localStorage.getItem("point5") == "complete") normalCount++;
 let normalComplete =
  
 localStorage.getItem("point1") == "complete" &&
@@ -168,29 +191,33 @@ html += "⬜ 第7チェックポイント<br>";
 }
 document.getElementById("stampBook")
 .innerHTML = html;
-if (count < 5) {    
+if (perfectComplete) {
  
 document.getElementById("progress")
-.innerText =
-count + " / 5 達成";
+.innerHTML = `
+<strong>🌟 PERFECT COMPLETE！</strong><br>
+総スタンプ：7 / 7
+`;
  
 }
  
-else if (count < 7) {
+else if (normalComplete) {
  
 document.getElementById("progress")
-.innerText =
-"🎉 COMPLETE達成！ " +
-
-count + " / 7";
-
+.innerHTML = `
+総スタンプ：${count} / 7<br>
+通常ルート：✅ COMPLETE
+`;
+ 
 }
  
 else {
  
 document.getElementById("progress")
-.innerText =
-"🌟 PERFECT COMPLETE！";
+.innerHTML = `
+総スタンプ：${count} / 7<br>
+通常ルート：${normalCount} / 5
+`;
  
 }
 if (normalComplete && !perfectComplete) {
@@ -254,14 +281,13 @@ font-size:40px;
  
 <img
 src="https://placehold.co/500x300/00AAFF/white?text=PERFECT+IMAGE"
-alt
+alt="限定イラスト">
 </div>
 
 `;
 }
  
 }
- 
 function resetStamp() {
  
 localStorage.removeItem("stampCount");
