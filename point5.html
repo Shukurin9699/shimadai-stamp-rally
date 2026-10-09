@@ -1,108 +1,50 @@
 <!DOCTYPE html>
 <html lang="ja">
- 
 <head>
 <meta charset="UTF-8">
 <title>第5チェックポイント</title>
 </head>
- 
 <body>
- 
 <h1>第5チェックポイント</h1>
- 
 <div id="questionArea">
- 
+<h2> 第5チェックポイント</h2>
 <p>
-Q. 島根大学松江キャンパスがある市は？
+スタンプを押して獲得してください！
 </p>
- 
-<button onclick="answerQuestion(true)">
-① 松江市
-</button>
- 
-<button onclick="answerQuestion(false)">
-② 出雲市
-</button>
- 
-<button onclick="answerQuestion(false)">
-③ 浜田市
-</button>
- 
-</div>
- 
-<div id="result"></div>
- 
-<div id="backButton"></div>
- 
-<script>
- 
-checkCompletedPoint();
- 
-function answerQuestion(correct) {
- 
-if (
-localStorage.getItem("point5")
-== "complete"
-) {
-return;
-}
- 
-let resultTitle = "";
-let resultText = "";
- 
-if(correct){
- 
-resultTitle = "⭕ 正解！";
-resultText =
-"島根大学松江キャンパスは松江市にあります。";
- 
-}else{
- 
-resultTitle = "❌ 不正解";
-resultText =
-"正解は松江市です。島根大学松江キャンパスは松江市にあります。";
- 
-}
- 
-document.getElementById("result")
-.innerHTML = `
-<h3>${resultTitle}</h3>
- 
-<p>${resultText}</p>
- 
 <button onclick="getPoint5Stamp()">
-スタンプ獲得
+ スタンプを押す
 </button>
-`;
-}
- 
+</div>
+<div id="result"></div>
+<div id="backButton"></div>
+<script>
+checkCompletedPoint();
 function getPoint5Stamp() {
- 
 localStorage.setItem(
 "point5",
 "complete"
 );
- 
 let count =
 Number(
 localStorage.getItem("stampCount")
 ) || 0;
- 
 count++;
- 
 localStorage.setItem(
 "stampCount",
 count
 );
- 
 document.getElementById("result")
 .innerHTML = `
-<h3>✅ スタンプ取得済み</h3>
+<h3> スタンプ獲得！</h3>
+ 
+<img
+src="stamp1.kari.jpg"
+width="220">
+ 
 <p>
-第5チェックポイントクリア！
+第5スタンプを獲得しました！
 </p>
 `;
- 
 document.getElementById("questionArea")
 .style.display = "none";
 document.getElementById("backButton")
@@ -113,25 +55,25 @@ onclick="location.href='index.html'">
 </button>
 `;
 }
- 
 function checkCompletedPoint() {
- 
 if (
 localStorage.getItem("point5")
 == "complete"
 ) {
- 
 document.getElementById("questionArea")
 .style.display = "none";
- 
 document.getElementById("result")
 .innerHTML = `
-<h3>✅ スタンプ取得済み</h3>
+<h3> スタンプ獲得！</h3>
+ 
+<img
+src="stamp1.kari.jpg"
+width="220">
+ 
 <p>
-このチェックポイントはクリア済みです。
+第5スタンプを獲得しました！
 </p>
 `;
- 
 document.getElementById("backButton")
 .innerHTML = `
 <button
@@ -141,9 +83,7 @@ onclick="location.href='index.html'">
 `;
 }
 }
- 
+
 </script>
- 
 </body>
- 
 </html>

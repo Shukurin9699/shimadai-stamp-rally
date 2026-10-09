@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
- 
 <head>
 <meta charset="UTF-8">
 <title>淞風祭スタンプラリー</title>
@@ -39,11 +38,55 @@ background:#0050a0;
 }
 
 .card{
-background:white;
-padding:20px;
+background:rgb(57, 219, 117);
+padding:40px;
 border-radius:12px;
 box-shadow:0 2px 8px rgba(0,0,0,0.15);
 margin-bottom:20px;
+}
+.stamp-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:15px;
+}
+.stamp-cell{
+background:white;
+border-radius:10px;
+padding:20px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+box-shadow:
+0 2px 5px rgba(0,0,0,0.1);
+height:140px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+.stamp-number{
+position:absolute;
+top:8px;
+left:10px;
+width:24px;
+height:24px;
+border-radius:50%;
+background:#0067C0;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+}
+h2{
+font-size:28px;
+margin-bottom:20px;
+}
+.empty-stamp{
+margin-top:-30px;
+font-size:25px;
 }
 </style>
 
@@ -53,7 +96,7 @@ margin-bottom:20px;
  
 <h1>🎉 淞風祭スタンプラリー</h1>
  
-<p>集めたスタンプ</p>
+<h2>スタンプカード</h2>
  
 <div id="stampBook" class="card"></div>
 <p id="progress"></p>
@@ -88,11 +131,6 @@ margin-bottom:20px;
 第6チェックポイントへ
 </a>
 </p>
-<p>
-<a href="point7.html">
-第7チェックポイントへ
-</a>
-</p>
 <button onclick="resetStamp()">
 リセット
 </button>
@@ -107,120 +145,104 @@ Number(localStorage.getItem("stampCount")) || 0;
 updateDisplay();
  
 function updateDisplay() {
-let normalCount = 0;
  
-if(localStorage.getItem("point1") == "complete") normalCount++;
-if(localStorage.getItem("point2") == "complete") normalCount++;
-if(localStorage.getItem("point3") == "complete") normalCount++;
-if(localStorage.getItem("point4") == "complete") normalCount++;
-if(localStorage.getItem("point5") == "complete") normalCount++;
-let normalComplete =
+let complete =
  
 localStorage.getItem("point1") == "complete" &&
 localStorage.getItem("point2") == "complete" &&
 localStorage.getItem("point3") == "complete" &&
 localStorage.getItem("point4") == "complete" &&
-localStorage.getItem("point5") == "complete";
- 
-let perfectComplete =
- 
-normalComplete &&
-localStorage.getItem("point6") == "complete" &&
-localStorage.getItem("point7") == "complete";
-let html = "";
+localStorage.getItem("point5") == "complete" &&
+localStorage.getItem("point6") == "complete";
 
+let html = `
+<div class="stamp-grid">
+<div class="stamp-cell">
  
-if (
-localStorage.getItem("point1")
-== "complete"
-) {
-html += "✅ 第1チェックポイント<br>";
-} else {
-html += "⬜ 第1チェックポイント<br>";
-}
+<div class="stamp-number">
+1
+</div>
  
-if (
-localStorage.getItem("point2")
-== "complete"
-) {
-html += "✅ 第2チェックポイント<br>";
-} else {
-html += "⬜ 第2チェックポイント<br>";
-}
-if (
-localStorage.getItem("point3")
-== "complete"
-) {
-html += "✅ 第3チェックポイント<br>";
-} else {
-html += "⬜ 第3チェックポイント<br>";
-}
-if (
-localStorage.getItem("point4")
-== "complete"
-) {
-html += "✅ 第4チェックポイント<br>";
-} else {
-html += "⬜ 第4チェックポイント<br>";
+${
+localStorage.getItem("point1")=="complete"
+?
+'<img src="stamp1.kari.jpg" width="120">'
+:
+'<div class="empty-stamp"> </div>'
 }
  
-if (
-localStorage.getItem("point5")
-== "complete"
-) {
-html += "✅ 第5チェックポイント<br>";
-} else {
-html += "⬜ 第5チェックポイント<br>";
-}
-if (
-localStorage.getItem("point6")
-== "complete"
-) {
-html += "✅ 第6チェックポイント<br>";
-} else {
-html += "⬜ 第6チェックポイント<br>";
-}
+</div>
+<div class="stamp-cell">
+<div class="stamp-number">
+2
+</div>
  
-if (
-localStorage.getItem("point7")
-== "complete"
-) {
-html += "✅ 第7チェックポイント<br>";
-} else {
-html += "⬜ 第7チェックポイント<br>";
+${
+localStorage.getItem("point2")=="complete"
+?
+'<img src="stamp1.kari.jpg" width="120">'
+:
+' '
 }
+</div>
+<div class="stamp-cell">
+<div class="stamp-number">
+3
+</div>
+ 
+${
+localStorage.getItem("point3")=="complete"
+?
+'<img src="stamp1.kari.jpg" width="120">'
+:
+' '
+}
+</div>
+<div class="stamp-cell">
+<div class="stamp-number">
+4
+</div>
+ 
+${
+localStorage.getItem("point4")=="complete"
+?
+'<img src="stamp1.kari.jpg" width="120">'
+:
+' '
+}
+</div>
+<div class="stamp-cell">
+<div class="stamp-number">
+5
+</div>
+ 
+${
+localStorage.getItem("point5")=="complete"
+?
+'<img src="stamp1.kari.jpg" width="120">'
+:
+' '
+}
+</div>
+<div class="stamp-cell">
+<div class="stamp-number">
+6
+</div>
+ 
+${
+localStorage.getItem("point6")=="complete"
+?
+'<img src="stamp1.kari.jpg" width="120">'
+:
+' '
+}
+</div>
+</div>
+`;
 document.getElementById("stampBook")
 .innerHTML = html;
-if (perfectComplete) {
+if (complete) {
  
-document.getElementById("progress")
-.innerHTML = `
-<strong>🌟 PERFECT COMPLETE！</strong><br>
-総スタンプ：7 / 7
-`;
- 
-}
- 
-else if (normalComplete) {
- 
-document.getElementById("progress")
-.innerHTML = `
-総スタンプ：${count} / 7<br>
-通常ルート：✅ COMPLETE
-`;
- 
-}
- 
-else {
- 
-document.getElementById("progress")
-.innerHTML = `
-総スタンプ：${count} / 7<br>
-通常ルート：${normalCount} / 5
-`;
- 
-}
-if (normalComplete && !perfectComplete) {
 document.getElementById("complete")
 .innerHTML = `
 <div style="
@@ -231,6 +253,7 @@ border:3px solid orange;
 margin-top:20px;
 text-align:center;
 ">
+ 
 <h2 style="
 font-size:40px;
 color:orange;
@@ -243,50 +266,13 @@ color:orange;
 </p>
  
 <p>
-通常イラスト解放！
+6個すべてのスタンプを集めました！
+受付で景品を受け取ろう！
 </p>
-<img
-src="https://placehold.co/500x300/orange/white?text=NORMAL+IMAGE"
-alt="通常イラスト">
+ 
 </div>
 `;
 }
-if (perfectComplete) {
- 
-document.getElementById("complete")
-.innerHTML = `
-<div style="
-background:#e6f7ff;
-padding:20px;
-border-radius:10px;
-border:3px solid #00aaff;
-margin-top:20px;
-text-align:center;
-">
- 
-<h2 style="
-color:#00aaff;
-font-size:40px;
-">
-🌟 PERFECT COMPLETE 🌟
-</h2>
- 
-<p>
-デジタル完全制覇！
-</p>
- 
-<p>
-限定豪華イラスト解放！
-</p>
- 
-<img
-src="https://placehold.co/500x300/00AAFF/white?text=PERFECT+IMAGE"
-alt="限定イラスト">
-</div>
-
-`;
-}
- 
 }
 function resetStamp() {
  
@@ -297,7 +283,6 @@ localStorage.removeItem("point3");
 localStorage.removeItem("point4");
 localStorage.removeItem("point5");
 localStorage.removeItem("point6");
-localStorage.removeItem("point7");
 location.reload();
 }
  
