@@ -40,7 +40,7 @@ background:#0050a0;
 
 .card{
 background:rgb(57, 219, 117);
-padding:40px;
+padding:60px;
 border-radius:12px;
 box-shadow:0 2px 8px rgba(0,0,0,0.15);
 margin-bottom:20px;
@@ -54,7 +54,7 @@ margin-top:15px;
 .stamp-cell{
 background:white;
 border-radius:10px;
-padding:20px;
+padding:35px;
 text-align:center;
 font-size:24px;
 font-weight:bold;
@@ -67,25 +67,48 @@ justify-content:center;
 align-items:center;
 position:relative;
 }
-.stamp-number{
-position:absolute;
-top:8px;
-left:10px;
+.place-name{
 
-width:36px;
-height:36px;
+    width:100%;
+    height:100%;
 
-border-radius:50%;
+    display:flex;
+    flex-direction:column;
 
-background:#0067C0;
-color:white;
+    align-items:center;
+    justify-content:center;
+}
 
-display:flex;
-align-items:center;
-justify-content:center;
+.place-title{
 
-font-size:30px;
-font-weight:bold;
+    font-weight:bold;
+    height:60px;
+    margin-bottom:15px;
+}
+
+.place-room{
+
+    background:#8fd3ff;
+
+    color:black;
+
+    border-radius:12px;
+
+    width:150px;
+    height:170px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    line-height:1.4;
+
+    box-sizing:border-box;
 }
 h2{
 font-size:60px;
@@ -158,92 +181,181 @@ localStorage.getItem("point6") == "complete";
 
 let html = `
 <div class="stamp-grid">
-<div class="stamp-cell">
- 
-<div class="stamp-number">
-1
-</div>
- 
-${
+<div class="stamp-cell">${
 localStorage.getItem("point1")=="complete"
 ?
-'<img src="stamp1.kari.jpg" width="140">'
+'<img src="1791549033140.jpg" width="150">'
 :
-'<div class="empty-stamp"> </div>'
+`
+<div class="place-name">
+
+<div class="place-title"
+style="
+font-size:15px;
+">
+パーソナルカラー診断
+</div>
+
+<div class="place-room"
+style="
+font-size:20px;
+">
+教育学部棟<br>
+IPMルーム
+</div>
+
+</div>
+`
 }
- 
 </div>
+ 
 <div class="stamp-cell">
-<div class="stamp-number">
-2
-</div>
- 
 ${
 localStorage.getItem("point2")=="complete"
 ?
-'<img src="stamp1.kari.jpg" width="140">'
+'<img src="1791549033163.jpg" width="150">'
 :
-' '
+`
+<div class="place-name">
+
+<div class="place-title"
+style="
+font-size:20px;
+">
+ヘアアレンジ
+</div>
+
+<div class="place-room"
+style="
+font-size:20px;
+">
+学生支援<br>
+センター横
+</div>
+
+</div>
+`
 }
 </div>
 <div class="stamp-cell">
-<div class="stamp-number">
-3
-</div>
- 
 ${
 localStorage.getItem("point3")=="complete"
 ?
-'<img src="stamp1.kari.jpg" width="140">'
+'<img src="1791549033120.jpg" width="150">'
 :
-' '
+`
+<div class="place-name">
+
+<div class="place-title"
+style="
+font-size:20px;
+">
+献血企画
+</div>
+
+<div class="place-room"
+style="
+font-size:20px;
+">
+正面駐車場
+</div>
+
+</div>
+`
 }
 </div>
 <div class="stamp-cell">
-<div class="stamp-number">
-4
-</div>
- 
 ${
 localStorage.getItem("point4")=="complete"
 ?
-'<img src="stamp1.kari.jpg" width="140">'
+'<img src="1791549033056.jpg" width="150">'
 :
-' '
+`
+<div class="place-name">
+
+<div class="place-title"
+style="
+font-size:16px;
+">
+性教育ユースカフェ
+</div>
+
+<div class="place-room"
+style="
+font-size:17px;
+">
+法文学部棟134<br>
+ミーティング<br>
+ルーム
+</div>
+
+</div>
+`
 }
 </div>
 <div class="stamp-cell">
-<div class="stamp-number">
-5
-</div>
- 
 ${
 localStorage.getItem("point5")=="complete"
 ?
-'<img src="stamp1.kari.jpg" width="140">'
+'<img src="1791549032940.jpg" width="150">'
 :
-' '
+`
+<div class="place-name">
+
+<div class="place-title"
+style="
+font-size:16px;
+">
+福祉について知ろう
+</div>
+
+<div class="place-room"
+style="
+font-size:20px;
+">
+法文学部棟201<br>
+セミナー室
+</div>
+
+</div>
+`
 }
 </div>
 <div class="stamp-cell">
-<div class="stamp-number">
-6
-</div>
- 
+
 ${
 localStorage.getItem("point6")=="complete"
 ?
-'<img src="stamp1.kari.jpg" width="140">'
+'<img src="stamp1.kari.jpg" width="150">'
 :
-' '
+`
+<div class="place-name">
+
+<div class="place-title"
+style="
+font-size:18px;
+">
+アシカル展示企画
+</div>
+
+<div class="place-room"
+style="
+font-size:20px;
+">
+生物資源学部<br>
+3号館
+</div>
+
+</div>
+`
 }
+
 </div>
 </div>
 `;
 document.getElementById("stampBook")
 .innerHTML = html;
 if (complete) {
- 
 document.getElementById("complete")
 .innerHTML = `
 <div style="
@@ -275,7 +387,7 @@ line-height:1.8;
 font-weight:bold;
 ">
 6個すべてのスタンプを集めました！<br>
-受付で景品を受け取ろう！
+本部で景品を受け取ろう！
 </p>
  
 </div>
