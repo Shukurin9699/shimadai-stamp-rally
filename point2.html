@@ -3,11 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <title>第2チェックポイント</title>
+<style>
+
+body{
+    font-family:sans-serif;
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+    background:#f5f7fb;
+    text-align:center;
+}
+
+h1{
+    color:#0067C0;
+    font-size:70px;
+}
+
+h3{
+    font-size:60px;
+    color:#0067C0;
+}
+
+p{
+    font-size:30px;
+    font-weight:bold;
+}
+
+button{
+    padding:30px 60px;
+    font-size:40px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#0067C0;
+    color:white;
+
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0050a0;
+}
+
+img{
+    max-width:250px;
+    height:auto;
+}
+
+</style>
 </head>
 <body>
-<h1>第2チェックポイント</h1>
+<h1>ヘアアレンジ</h1>
 <div id="questionArea">
-<h2> 第2チェックポイント</h2>
 <p>
 スタンプを押して獲得してください！
 </p>
@@ -35,15 +83,18 @@ count
 );
 document.getElementById("result")
 .innerHTML = `
-<h3> スタンプ獲得！</h3>
- 
+<h3 style="
+font-size:48px;
+color:#0067C0;
+margin-bottom:10px;
+">
+ スタンプ獲得！
+</h3>
+
 <img
-src="stamp1.kari.jpg"
-width="220">
- 
-<p>
-第2スタンプを獲得しました！
-</p>
+src="1791549033163.jpg"
+width="350">
+
 `;
 document.getElementById("questionArea")
 .style.display = "none";
@@ -64,15 +115,18 @@ document.getElementById("questionArea")
 .style.display = "none";
 document.getElementById("result")
 .innerHTML = `
-<h3> スタンプ獲得！</h3>
- 
+<h3 style="
+font-size:48px;
+color:#0067C0;
+margin-bottom:10px;
+">
+ スタンプ獲得！
+</h3>
+
 <img
-src="stamp1.kari.jpg"
-width="220">
- 
-<p>
-第2スタンプを獲得しました！
-</p>
+src="1791549033163.jpg"
+width="350">
+
 `;
 document.getElementById("backButton")
 .innerHTML = `
