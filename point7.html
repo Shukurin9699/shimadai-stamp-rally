@@ -1,149 +1,83 @@
 <!DOCTYPE html>
 <html lang="ja">
- 
 <head>
 <meta charset="UTF-8">
-<title>第7チェックポイント</title>
+<title>完全制覇！</title>
+
+<style>
+
+body{
+    font-family:sans-serif;
+    background:#f5f7fb;
+
+    text-align:center;
+
+    padding:30px;
+
+    max-width:800px;
+    margin:auto;
+}
+
+h1{
+    color:#ff8800;
+
+    font-size:60px;
+
+    margin-top:20px;
+}
+
+.message{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+
+    font-size:28px;
+
+    line-height:1.8;
+}
+.footer{
+
+    margin-top:40px;
+
+    text-align:right;
+
+    color:#666;
+
+    font-size:20px;
+
+    font-weight:bold;
+}
+</style>
+
 </head>
- 
 <body>
- 
-<h1>第7チェックポイント</h1>
- 
-<div id="questionArea">
- 
-<p>
-Q. 島根大学松江キャンパスがある市は？
-</p>
- 
-<button onclick="answerQuestion(true)">
-① 松江市
-</button>
- 
-<button onclick="answerQuestion(false)">
-② 出雲市
-</button>
- 
-<button onclick="answerQuestion(false)">
-③ 浜田市
-</button>
- 
+
+<h1> 淞風祭スタンプラリー<br>
+    完全制覇 </h1>
+
+<div class="message">
+
+🎉 おめでとうございます！ 🎉<br><br>
+
+すべてのスタンプを集めてくれて
+ありがとうございます！<br><br>
+
+楽しんでいただけたでしょうか？<br><br>
+
+このスタンプラリーが、
+大学祭の思い出のひとつになれば嬉しいです！<br><br>
+
+引き続き、
+淞風祭をお楽しみください！
+<div class="footer">
+淞風祭実行委員会
 </div>
- 
-<div id="result"></div>
- 
-<div id="backButton"></div>
- 
-<script>
- 
-checkCompletedPoint();
- 
-function answerQuestion(correct) {
- 
-if (
-localStorage.getItem("point7")
-== "complete"
-) {
-return;
-}
- 
-let resultTitle = "";
-let resultText = "";
- 
-if(correct){
- 
-resultTitle = "⭕ 正解！";
-resultText =
-"島根大学松江キャンパスは松江市にあります。";
- 
-}else{
- 
-resultTitle = "❌ 不正解";
-resultText =
-"正解は松江市です。島根大学松江キャンパスは松江市にあります。";
- 
-}
- 
-document.getElementById("result")
-.innerHTML = `
-<h3>${resultTitle}</h3>
- 
-<p>${resultText}</p>
- 
-<button onclick="getPoint7Stamp()">
-スタンプ獲得
-</button>
-`;
-}
- 
-function getPoint7Stamp() {
- 
-localStorage.setItem(
-"point7",
-"complete"
-);
- 
-let count =
-Number(
-localStorage.getItem("stampCount")
-) || 0;
- 
-count++;
- 
-localStorage.setItem(
-"stampCount",
-count
-);
- 
-document.getElementById("result")
-.innerHTML = `
-<h3>✅ スタンプ取得済み</h3>
-<p>
-第7チェックポイントクリア！
-</p>
-`;
- 
-document.getElementById("questionArea")
-.style.display = "none";
-document.getElementById("backButton")
-.innerHTML = `
-<button
-onclick="location.href='index.html'">
-🏠 スタンプ帳へ戻る
-</button>
-`;
-}
- 
-function checkCompletedPoint() {
- 
-if (
-localStorage.getItem("point7")
-== "complete"
-) {
- 
-document.getElementById("questionArea")
-.style.display = "none";
- 
-document.getElementById("result")
-.innerHTML = `
-<h3>✅ スタンプ取得済み</h3>
-<p>
-このチェックポイントはクリア済みです。
-</p>
-`;
- 
-document.getElementById("backButton")
-.innerHTML = `
-<button
-onclick="location.href='index.html'">
-🏠 スタンプ帳へ戻る
-</button>
-`;
-}
-}
- 
-</script>
- 
+</div>
+
 </body>
- 
 </html>
