@@ -159,6 +159,9 @@ font-size:25px;
  
 <div id="complete"></div>
  
+<button onclick="resetStamp()">
+リセット
+</button>
 <script>
  
 let count =
@@ -357,6 +360,16 @@ font-weight:bold;
 </div>
 `;
 }
+}
+function resetStamp() {
+localStorage.removeItem("stampCount");
+localStorage.removeItem("point1");
+localStorage.removeItem("point2");
+localStorage.removeItem("point3");
+localStorage.removeItem("point4");
+localStorage.removeItem("point5");
+localStorage.removeItem("point6");
+location.reload();
 }
  
 </script>
