@@ -149,6 +149,12 @@ margin-bottom:20px;
 margin-top:-30px;
 font-size:25px;
 }
+.fourth-stamp{
+    transform:translateX(140px);
+}
+.fifth-stamp{
+    transform:translateX(160px);
+}
 </style>
 </head>
 <body>
@@ -170,39 +176,14 @@ function updateDisplay() {
  
 let complete =
  
-localStorage.getItem("point1") == "complete" &&
 localStorage.getItem("point2") == "complete" &&
 localStorage.getItem("point3") == "complete" &&
 localStorage.getItem("point4") == "complete" &&
 localStorage.getItem("point5") == "complete" &&
 localStorage.getItem("point6") == "complete";
-
 let html = `
 <div class="stamp-grid">
-<div class="stamp-cell">
 
-<div class="place-title">
-パーソナルカラー診断
-</div>
-
-${
-localStorage.getItem("point1")=="complete"
-?
-'<img src="1791549033140.jpg" width="180">'
-:
-`
-<div class="place-room"
-style="
-font-size:40px;
-">
-教育学部棟<br>
-IPMルーム
-</div>
-`
-}
-
-</div>
- 
 <div class="stamp-cell">
 <div class="place-title">
 ヘアアレンジ
@@ -270,7 +251,8 @@ font-size:30px;
 `
 }
 </div>
-<div class="stamp-cell">
+
+<div class="stamp-cell fourth-stamp">
 <div class="place-title">
 福祉について知ろう
 </div>
@@ -292,7 +274,8 @@ font-size:33px;
 `
 }
 </div>
-<div class="stamp-cell">
+
+<div class="stamp-cell fifth-stamp">
 <div class="place-title">
 アシカル展示企画
 </div>
